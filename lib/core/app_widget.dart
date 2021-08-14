@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Beta_Fit',
-      home: SplashPage(),
+      home: LoginPage(),
     );
   }
 }

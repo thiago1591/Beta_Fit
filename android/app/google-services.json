@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "457317012870",
+    "project_id": "beta-fit",
+    "storage_bucket": "beta-fit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457317012870:android:e7833668554f4dbff94807",
+        "android_client_info": {
+          "package_name": "com.example.debate_place_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457317012870-50fh5j45gr2k10j6fh5md4f896mv0ht9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.debate_place_flutter",
+            "certificate_hash": "3653564484bba8dee2a4ccf3b2a9d73d99daa59c"
+          }
+        },
+        {
+          "client_id": "457317012870-482m2m9324jg8c39i3qee1t2qbdr0frr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANKFwLKgnYDcSDMOrA4brCzWb3wREb7kQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457317012870-482m2m9324jg8c39i3qee1t2qbdr0frr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
