@@ -1,9 +1,16 @@
+import 'package:debate_place_flutter/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginButtonWidget extends StatelessWidget {
-  const LoginButtonWidget({Key? key}) : super(key: key);
+class LoginButtonWidget extends StatefulWidget {
+  const LoginButtonWidget({ Key? key }) : super(key: key);
 
+  @override
+  _LoginButtonWidgetState createState() => _LoginButtonWidgetState();
+}
+
+class _LoginButtonWidgetState extends State<LoginButtonWidget> {
+  final controller = LoginController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,19 +19,7 @@ class LoginButtonWidget extends StatelessWidget {
           height: 45,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.white),
-            onPressed: () async {
-              GoogleSignIn _googleSignIn = GoogleSignIn(
-                scopes: [
-                  'email',
-                ],
-              );
-              try {
-                  final response = await _googleSignIn.signIn();
-                  print(response);
-                  } catch (error) {
-                    print(error);
-                  }
-            },
+            onPressed: controller.googleSignIn,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
