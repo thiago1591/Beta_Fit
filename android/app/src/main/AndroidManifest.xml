@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.debate_place_flutter">
    <application
-        android:label="debate_place_flutter"
+        android:label="Beta_Fit"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

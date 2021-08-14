@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
           crossAxisCount: 2,
-          children: [1, 2, 3, 4, 5].map((e) => ImageCardWidget()).toList(),
+          children: [1, 2, 3, 4, 5,6,7,8].map((e) => ImageCardWidget()).toList(),
         ),
       );
     } else {

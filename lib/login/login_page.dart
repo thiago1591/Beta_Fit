@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/login-background.jpg"),
+              image: AssetImage("assets/images/login-background2.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -31,11 +31,8 @@ class LoginPage extends StatelessWidget {
                 Text('dev mais saudável',
                     style: AppTextStyles.loginTitle,
                     textAlign: TextAlign.center),
-                Expanded(flex: 1,child: Text(''),),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child:LoginButtonWidget()
-                )
+                Expanded(flex: 1,child: Text(''),),  
+                LoginButtonWidget()
               ],
             ),
           ),

@@ -6,10 +6,11 @@ class ImageCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Container(
-          
-          
-          child: Text('imagem', textAlign: TextAlign.center,),
-        ));
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(children: [
+          Image.asset('assets/images/running.jpg'),
+          Text('10/08')
+          ],)
+        );
   }
 }
