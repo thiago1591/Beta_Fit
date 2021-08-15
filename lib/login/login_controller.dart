@@ -16,6 +16,7 @@ class LoginController {
       final user = UserModel(
         name: response!.displayName!,
         photoURL: response.photoUrl,
+        id: response.id,
       );
       authController.setUser(context, user);
       print(response);

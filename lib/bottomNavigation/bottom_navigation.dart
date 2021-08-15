@@ -30,7 +30,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         case 0:
             return HomePage(user: user);
         case 1:
-            return UploadImagePage();
+            return UploadImagePage(user: user);
             
         default:
             return RankingPage();

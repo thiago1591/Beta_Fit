@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 class UserModel {
+  final id;
   final String name;
   final String? photoURL;
 
-  UserModel({required this.name, this.photoURL});
+  UserModel({required this.name, this.photoURL, this.id});
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(name: map['name'], photoURL: map['photoURL']);
