@@ -1,35 +1,49 @@
 import 'package:debate_place_flutter/core/app_colors.dart';
 import 'package:debate_place_flutter/home/home_page.dart';
-import 'package:debate_place_flutter/login/login_page.dart';
 import 'package:debate_place_flutter/ranking/ranking_page.dart';
+import 'package:debate_place_flutter/shared/models/user_model.dart';
 import 'package:debate_place_flutter/upload_image/upload_image_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({ Key? key }) : super(key: key);
+  final UserModel user;
+  const BottomNavigation({ Key? key, required this.user }) : super(key: key);
 
   @override
-  _BottomNavigationState createState() => _BottomNavigationState();
+  _BottomNavigationState createState() => _BottomNavigationState(user);
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
   int _indiceAtual = 0;
-
-  final List<Widget> _telas = [
-    HomePage(),
-    UploadImagePage(),
-    RankingPage(),
-  ];
+  UserModel user;
+  _BottomNavigationState(this.user);
+  
 
   void _onItemTapped(int index) {
     setState(() {
       _indiceAtual = index;
     });
   }
+
+  Widget getPage(int index) {
+    switch (index){
+        case 0:
+            return HomePage(user: user);
+        case 1:
+            return UploadImagePage();
+            
+        default:
+            return RankingPage();
+    }
+  }
+
+
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _telas[_indiceAtual],
+      body: getPage(_indiceAtual),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -52,3 +66,4 @@ class _BottomNavigationState extends State<BottomNavigation> {
     );
   }
 }
+

@@ -1,4 +1,5 @@
 import 'package:debate_place_flutter/core/app_text_styles.dart';
+import 'package:debate_place_flutter/shared/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -6,6 +7,8 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authController = AuthController();
+    authController.currentUser(context);
     return Scaffold(
       body: Container(
         width: double.infinity,
