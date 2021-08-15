@@ -1,10 +1,17 @@
 import 'package:debate_place_flutter/core/app_colors.dart';
 import 'package:debate_place_flutter/core/app_text_styles.dart';
+import 'package:debate_place_flutter/shared/database/database_controller.dart';
 import 'package:flutter/material.dart';
 
-class UploadImagePage extends StatelessWidget {
-  const UploadImagePage({Key? key}) : super(key: key);
+class UploadImagePage extends StatefulWidget {
+  const UploadImagePage({ Key? key }) : super(key: key);
 
+  @override
+  _UploadImagePageState createState() => _UploadImagePageState();
+}
+
+class _UploadImagePageState extends State<UploadImagePage> {
+  var databaseService = DatabaseService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +41,9 @@ class UploadImagePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 35),
               child: FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () async{
+                    await databaseService.addUser();
+                  },
                   backgroundColor: AppColors.black,
                   child: Icon(Icons.add)),
             )

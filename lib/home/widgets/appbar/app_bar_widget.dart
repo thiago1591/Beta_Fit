@@ -1,10 +1,9 @@
-import 'package:debate_place_flutter/core/app_gradients.dart';
 import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:debate_place_flutter/home/widgets/score_card/score_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
-  AppBarWidget()
+  AppBarWidget(user)
       : super(
             preferredSize: Size.fromHeight(280),
             child: Container(
@@ -30,7 +29,7 @@ class AppBarWidget extends PreferredSize {
                               CircleAvatar(
                                 radius: 30.0,
                                 backgroundImage: NetworkImage(
-                                    'https://avatars.githubusercontent.com/u/66754516?v=4'),
+                                    "${user.photoURL}"),
                                 backgroundColor: Colors.transparent,
                               ),
                               Text.rich(
@@ -39,7 +38,7 @@ class AppBarWidget extends PreferredSize {
                                     style: AppTextStyles.hello,
                                     children: [
                                       TextSpan(
-                                          text: "Thiago",
+                                          text: "${user.name}",
                                           style: AppTextStyles.helloBold)
                                     ]),
                               ),

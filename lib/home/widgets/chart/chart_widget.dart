@@ -16,12 +16,6 @@ class _ChartWidgetState extends State<ChartWidget>
   late Animation<double> _animation;
 
 
-
-  @override
-  void initState() {
-
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
