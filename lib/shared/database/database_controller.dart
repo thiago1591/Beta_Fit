@@ -19,14 +19,7 @@ class DatabaseService {
     Future<String> getUser() async {
      final instance =  await SharedPreferences.getInstance();
       final user = instance.get("user") as String;
-      print(user);
       return user;
     }
-
-
- 
-    
-
-
   
 }
