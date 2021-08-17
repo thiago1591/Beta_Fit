@@ -26,12 +26,12 @@ class _ChartWidgetState extends State<ChartWidget>
             children: [
               Center(
                 child: Container(
-                  height: 80,
+                  height: 75,
                   width: 80,
                   child: CircularProgressIndicator(
                     strokeWidth: 10,
                     backgroundColor: AppColors.chartSecondary,
-                    value: .75,
+                    value: widget.percent/100,
                     valueColor:
                         AlwaysStoppedAnimation<Color>(AppColors.chartPrimary),
                   ),
@@ -39,7 +39,7 @@ class _ChartWidgetState extends State<ChartWidget>
               ),
               Center(
                 child: Text(
-                  "75%",
+                  "${widget.percent.toInt()}%",
                  //"${(_animation.value * 100).toInt()}%",
                   style: AppTextStyles.heading,
                 ),

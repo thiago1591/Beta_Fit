@@ -3,7 +3,7 @@ import 'package:debate_place_flutter/home/widgets/score_card/score_card_widget.d
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
-  AppBarWidget(user)
+  AppBarWidget(user, qtt)
       : super(
             preferredSize: Size.fromHeight(280),
             child: Container(
@@ -38,7 +38,7 @@ class AppBarWidget extends PreferredSize {
                                     style: AppTextStyles.hello,
                                     children: [
                                       TextSpan(
-                                          text: "${user.name}",
+                                          text: "${user.firstName}",
                                           style: AppTextStyles.helloBold)
                                     ]),
                               ),
@@ -58,7 +58,7 @@ class AppBarWidget extends PreferredSize {
                     ),
                   ),
                   Align(
-                      alignment: Alignment(0.0, 0.8), child: ScoreCardWidget())
+                      alignment: Alignment(0.0, 0.8), child: ScoreCardWidget(user:user, qtt:qtt))
                 ],
               ),
             ));
