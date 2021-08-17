@@ -2,7 +2,7 @@ import 'package:debate_place_flutter/core/app_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
   runApp(AppFirebase());
 }
 

@@ -28,7 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget getPage(int index) {
     switch (index){
         case 0:
-            return HomePage(user: user);
+            return HomePage(user: user,);
         case 1:
             return UploadImagePage(user: user);
             
@@ -36,8 +36,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
             return RankingPage();
     }
   }
-
-
 
   
   @override

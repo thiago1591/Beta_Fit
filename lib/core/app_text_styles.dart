@@ -47,6 +47,12 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
   );
 
+   static final TextStyle message = GoogleFonts.notoSans(
+    color: Colors.grey[800],
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
+
    static final TextStyle imagesSend = GoogleFonts.raleway(
     color: AppColors.black,
     fontSize: 20,
