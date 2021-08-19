@@ -19,7 +19,7 @@ class _RankingPageState extends State<RankingPage> {
   @override
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
-    final usersList = users.orderBy('imagesQtt');
+    //final usersList = users.orderBy('imagesQtt');
     
     return Scaffold(
       body: StreamBuilder(
@@ -50,7 +50,8 @@ class _RankingPageState extends State<RankingPage> {
                       ],
                     ),
                   ),
-                  ListView.builder(
+                 Expanded(child:  ListView.builder(
+                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                     shrinkWrap: true,
                     itemCount: (snapshot.data! as QuerySnapshot).docs.length,
                     itemBuilder: (context, index) {
@@ -60,7 +61,7 @@ class _RankingPageState extends State<RankingPage> {
                         name: "${(snapshot.data! as QuerySnapshot).docs[index].get('name')}", 
                         imageQtt: (snapshot.data! as QuerySnapshot).docs[index].get('imagesQtt'));
                     },
-                  ),
+                  ),)
                 ],
               ),
             ),

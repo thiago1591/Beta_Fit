@@ -1,9 +1,10 @@
 import 'dart:io';
-
 import 'package:debate_place_flutter/bottomNavigation/bottom_navigation.dart';
 import 'package:debate_place_flutter/core/app_colors.dart';
-import 'package:debate_place_flutter/home/home_page.dart';
+import 'package:debate_place_flutter/shared/cloud_firestore/imagesController.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
+import 'package:debate_place_flutter/shared/services/cloudController.dart';
+import 'package:debate_place_flutter/upload_image/images_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -26,29 +27,7 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
   Widget build(BuildContext context) {
     final ImagePicker _picker = ImagePicker();
 
-    String? imageUrl;
-
-    Future _uploadFile(String path) async {
-      firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
-          .ref()
-          .child('users')
-          .child('${widget.user.name}')
-          .child('images')
-          .child('${DateTime.now().toIso8601String()}');
-      final result = await ref.putFile(File(path));
-      final fileUrl = await result.ref.getDownloadURL();
-
-      setState(() {
-        imageUrl = fileUrl;
-      });
-
-      widget.onFileChanged(fileUrl);
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => BottomNavigation(user: widget.user)));
-    }
+    
 
     Future _pickImage(ImageSource source) async {
       final pickedFile =
@@ -64,7 +43,7 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
         return;
       }
 
-      await _uploadFile(file.path);
+      //await uploadImageFile(file.path);
     }
 
     Future _selectPhoto() async {
@@ -100,6 +79,7 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35),
       child: FloatingActionButton(
+        //onPressed: () {updateImageQtt('Thiago André', widget.user.imagesQtt);},
           onPressed: _selectPhoto,
           backgroundColor: AppColors.black,
           child: Icon(Icons.add)),
