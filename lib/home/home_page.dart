@@ -1,5 +1,6 @@
 import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:debate_place_flutter/home/widgets/appbar/app_bar_widget.dart';
+import 'package:debate_place_flutter/home/widgets/begin_challenge/begin_challenge_widget.dart';
 import 'package:debate_place_flutter/home/widgets/imagecard/image_card_widget.dart';
 import 'package:debate_place_flutter/shared/cloud_firestore/imagesController.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
@@ -31,60 +32,11 @@ class _HomePageState extends State<HomePage> {
           List imagesList = snapshotToList(snapshot);        
 
           if (imagesList.length == 0) {
-            return Center(
-              child: Scaffold(
-                appBar: AppBarWidget(
-                    widget.user, imagesList.length),
-                body: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: Container(
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Image.asset('assets/images/workout2.png'),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Adicione sua primeira imagem na aba',
-                                  style: AppTextStyles.message,
-                                  textAlign: TextAlign.center,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.upload),
-                                    Text(
-                                      'Upload',
-                                      style: AppTextStyles.heading,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'para iniciar o desafio!',
-                                  style: AppTextStyles.message,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          )),
-                    ),
-                  ),
-                ),
-              ),
+            return BeginChallengeWidget(
+              user: widget.user, imagesQtt: imagesList.length
             );
           }
+          
           return Scaffold(
             appBar: AppBarWidget(
                 widget.user, imagesList.length),
