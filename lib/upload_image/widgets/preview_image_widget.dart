@@ -30,6 +30,8 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
     
 
     Future _pickImage(ImageSource source) async {
+      final imageController = ImagesController();
+      
       final pickedFile =
           await _picker.pickImage(source: source, imageQuality: 50);
       if (pickedFile == null) {
@@ -43,7 +45,7 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
         return;
       }
 
-      //await uploadImageFile(file.path);
+      await imageController.uploadImageFile(file.path,context,widget.user);
     }
 
     Future _selectPhoto() async {

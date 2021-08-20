@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('users');
 
+class ImagesController {
 //Faz o upload da imagem para o storage do firebase e cria uma URL de 
 //acesso a imagem, que é passada para a função uploadImageURL
 Future uploadImageFile(String path, context, UserModel user) async {
@@ -14,12 +15,12 @@ Future uploadImageFile(String path, context, UserModel user) async {
     firebase_storage.Reference ref = firebase_storage
         .FirebaseStorage.instance
         .ref()
-        .child('thiago')
+        .child('Thiago André')
         .child('${DateTime.now().toIso8601String()}');
     final result = await ref.putFile(File(path));
     String imgURL = await result.ref.getDownloadURL();
     print(imgURL);
-    uploadImageURL();
+    uploadImageURL(user.name, imgURL);
   } catch (e) {
     print(e);
   }
@@ -33,20 +34,19 @@ Future uploadImageFile(String path, context, UserModel user) async {
 
 //armazena a URL da imagem na coleção do user no cloud Firestore, 
 //assim é mais facil de acessa-la pelo StreamBuilder
-Future<void> uploadImageURL() {
+Future<void> uploadImageURL(userName, imageURL) {
 return users
-  .doc('Thiago André')
+  .doc('$userName')
       .update({
-        'images': FieldValue.arrayUnion(["http/teste2"])
+        'images': FieldValue.arrayUnion(["$imageURL"])
       })
       .then((value) => print("User Added"))
       .catchError((error) => print("Failed to add user: $error"));
   }
 
-Future<List> getImage() async {
+Future<List> getImages() async {
   var snapshot = await users.doc('Thiago André').get();
-  dynamic imagesList = snapshot.get(FieldPath(['images']));
-  print(imagesList);
+  List imagesList = snapshot.get(FieldPath(['images']));
   return imagesList;
 }
 
@@ -69,4 +69,5 @@ Future<void> imageQttIncrement() {
 })
 .then((value) => print("Follower count updated to $value"))
 .catchError((error) => print("Failed to update user followers: $error"));
+}
 }
