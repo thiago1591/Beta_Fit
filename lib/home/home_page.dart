@@ -1,4 +1,3 @@
-import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:debate_place_flutter/home/widgets/appbar/app_bar_widget.dart';
 import 'package:debate_place_flutter/home/widgets/begin_challenge/begin_challenge_widget.dart';
 import 'package:debate_place_flutter/home/widgets/imagecard/image_card_widget.dart';
@@ -51,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisCount: 2,
                       children: imagesList
                           .map((item) => ImageCardWidget(
-                              photoURL:
+                              profileImage:
                                   "$item",
                               date: "nao implementado ainda"))
                           .toList(),

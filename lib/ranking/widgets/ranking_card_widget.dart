@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class RankingCardWidget extends StatefulWidget {
   final pos, imageQtt;
-  final String photoURL, name;
-  const RankingCardWidget({Key? key,required this.pos,required  this.imageQtt,required  this.photoURL,required  this.name}) : super(key: key);
+  final String profileImage, name;
+  const RankingCardWidget({Key? key,required this.pos,required  this.imageQtt,required  this.profileImage,required  this.name}) : super(key: key);
 
   @override
   _RankingCardWidgetState createState() => _RankingCardWidgetState();
@@ -28,7 +28,7 @@ class _RankingCardWidgetState extends State<RankingCardWidget> {
             CircleAvatar(
               radius: 30.0,
               backgroundImage: NetworkImage(
-                  '${widget.photoURL}'),
+                  '${widget.profileImage}'),
               backgroundColor: Colors.transparent,
             ),
              SizedBox(width: 5,),

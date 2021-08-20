@@ -7,7 +7,7 @@ Future<void> setUserCloud(UserModel user) {
       .doc(user.name)
           .set({
             'name': user.name,
-            'photoURL': user.photoURL, 
+            'profileImage': user.profileImage, 
             'imagesQtt': user.imagesQtt 
           })
           .then((value) => print("User Added"))
@@ -35,7 +35,7 @@ Future<void> readUsers(UserModel user) {
           .doc(user.name)
           .set({
             'name': user.name, 
-            'photoURL': user.photoURL, 
+            'profileImage': user.profileImage, 
             'imagesQtt': user.imagesQtt 
           })
           .then((value) => print("User Added"))

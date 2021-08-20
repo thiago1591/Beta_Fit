@@ -4,13 +4,13 @@ class UserModel {
   final id;
   final String name;
   final String firstName;
-  final String? photoURL;
+  final String? profileImage;
   final int imagesQtt;
 
-  UserModel({this.id, required this.name, required this.firstName, this.photoURL, required this.imagesQtt});
+  UserModel({this.id, required this.name, required this.firstName, this.profileImage, required this.imagesQtt});
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(name: map['name'], firstName: map['firstName'], photoURL: map['photoURL'], imagesQtt: map['imagesQtt']);
+    return UserModel(name: map['name'], firstName: map['firstName'], profileImage: map['profileImage'], imagesQtt: map['imagesQtt']);
   }
 
   factory UserModel.fromJson(String json) =>
@@ -20,7 +20,7 @@ class UserModel {
         "id": id,
         "name": name,
         "firstName": firstName,
-        "photoURL": photoURL,
+        "profileImage": profileImage,
         "imagesQtt": imagesQtt, 
       };
 

@@ -18,8 +18,6 @@ class _RankingPageState extends State<RankingPage> {
   }
   @override
   Widget build(BuildContext context) {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-    //final usersList = users.orderBy('imagesQtt');
     
     return Scaffold(
       body: StreamBuilder(
@@ -57,7 +55,7 @@ class _RankingPageState extends State<RankingPage> {
                     itemBuilder: (context, index) {
                       return RankingCardWidget(
                         pos: index+1,
-                        photoURL: "${(snapshot.data! as QuerySnapshot).docs[index].get('photoURL')}", 
+                        profileImage: "${(snapshot.data! as QuerySnapshot).docs[index].get('profileImage')}", 
                         name: "${(snapshot.data! as QuerySnapshot).docs[index].get('name')}", 
                         imageQtt: (snapshot.data! as QuerySnapshot).docs[index].get('imagesQtt'));
                     },

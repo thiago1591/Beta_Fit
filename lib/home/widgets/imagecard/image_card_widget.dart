@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ImageCardWidget extends StatelessWidget {
-  final String photoURL,date;
-  const ImageCardWidget({Key? key, required this.photoURL, required this.date}) : super(key: key);
+  final String profileImage,date;
+  const ImageCardWidget({Key? key, required this.profileImage, required this.date}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ImageCardWidget extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage('$photoURL'),fit: BoxFit.cover
+                          image: NetworkImage('$profileImage'),fit: BoxFit.cover
                         ),
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(5), topRight: Radius.circular(5))
                       ),

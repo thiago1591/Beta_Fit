@@ -1,14 +1,9 @@
-import 'dart:io';
-import 'package:debate_place_flutter/bottomNavigation/bottom_navigation.dart';
 import 'package:debate_place_flutter/core/app_colors.dart';
 import 'package:debate_place_flutter/shared/cloud_firestore/imagesController.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/shared/services/cloudController.dart';
-import 'package:debate_place_flutter/upload_image/images_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class PreviewImageWidget extends StatefulWidget {
   final UserModel user;

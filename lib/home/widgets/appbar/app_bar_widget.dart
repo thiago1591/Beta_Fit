@@ -29,7 +29,7 @@ class AppBarWidget extends PreferredSize {
                               CircleAvatar(
                                 radius: 30.0,
                                 backgroundImage: NetworkImage(
-                                    "${user.photoURL}"),
+                                    "${user.profileImage}"),
                                 backgroundColor: Colors.transparent,
                               ),
                               Text.rich(

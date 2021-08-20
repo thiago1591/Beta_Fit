@@ -21,7 +21,7 @@ class LoginController {
         id: response.id,
         name: name,
         firstName: firstName,
-        photoURL: response.photoUrl,
+        profileImage: response.photoUrl,
         imagesQtt: 0,
       );
       authController.setUser(context, user);
