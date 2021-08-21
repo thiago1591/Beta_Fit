@@ -22,8 +22,6 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
   Widget build(BuildContext context) {
     final ImagePicker _picker = ImagePicker();
 
-    
-
     Future _pickImage(ImageSource source) async {
       final imageController = ImagesController();
       
@@ -76,7 +74,7 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35),
       child: FloatingActionButton(
-        //onPressed: () {updateImageQtt('Thiago André', widget.user.imagesQtt);},
+        //onPressed: () {print(widget.user);},
           onPressed: _selectPhoto,
           backgroundColor: AppColors.black,
           child: Icon(Icons.add)),

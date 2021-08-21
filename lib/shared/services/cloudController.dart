@@ -6,9 +6,12 @@ Future<void> setUserCloud(UserModel user) {
       return users
       .doc(user.name)
           .set({
+            'id': user.id,
             'name': user.name,
             'profileImage': user.profileImage, 
-            'imagesQtt': user.imagesQtt 
+            'images':[],
+            'imagesQtt': user.imagesQtt,
+            'congratsReceived': false,
           })
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));

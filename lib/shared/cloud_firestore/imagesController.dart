@@ -44,17 +44,17 @@ return users
       .catchError((error) => print("Failed to add user: $error"));
   }
 
-Future<List> getImages() async {
-  var snapshot = await users.doc('Thiago André').get();
+Future<List> getImages(userName) async {
+  var snapshot = await users.doc('$userName').get();
   List imagesList = snapshot.get(FieldPath(['images']));
   return imagesList;
 }
 
 
-Future<void> imageQttIncrement() {
+Future<void> imageQttIncrement(String userName) {
   return FirebaseFirestore.instance.runTransaction((transaction) async {
 
-  DocumentSnapshot snapshot = await transaction.get(users.doc('Thiago André'));
+  DocumentSnapshot snapshot = await transaction.get(users.doc('$userName'));
 
   if (!snapshot.exists) {
     throw Exception("User does not exist!");
@@ -63,7 +63,7 @@ Future<void> imageQttIncrement() {
   dynamic data = snapshot.data();
   int newFollowerCount = data['images_qtt'] + 1;
 
-  transaction.update(users.doc('Thiago André'), {'images_qtt': newFollowerCount});
+  transaction.update(users.doc('$userName'), {'images_qtt': newFollowerCount});
 
   return newFollowerCount;
 })

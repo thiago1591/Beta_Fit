@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:debate_place_flutter/ranking/widgets/ranking_card_widget.dart';
+import 'package:debate_place_flutter/shared/cloud_firestore/usersController.dart';
+import 'package:debate_place_flutter/shared/models/user_model.dart';
+import 'package:debate_place_flutter/shared/services/snapshotToList.dart';
 import 'package:flutter/material.dart';
 
 class RankingPage extends StatefulWidget {
@@ -11,14 +14,10 @@ class RankingPage extends StatefulWidget {
 }
 
 class _RankingPageState extends State<RankingPage> {
-
-   List order() {
-
-    return [];
-  }
   @override
   Widget build(BuildContext context) {
-    
+    final usersController = UsersController();
+
     return Scaffold(
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('users').snapshots(),
@@ -28,6 +27,8 @@ class _RankingPageState extends State<RankingPage> {
               child: CircularProgressIndicator(),
             );
           }
+
+          List<UserModel> usersList = usersController.orderUsers(snapshot);
           return SafeArea(
             child: Container(
               child: Column(
@@ -48,18 +49,22 @@ class _RankingPageState extends State<RankingPage> {
                       ],
                     ),
                   ),
-                 Expanded(child:  ListView.builder(
-                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                    shrinkWrap: true,
-                    itemCount: (snapshot.data! as QuerySnapshot).docs.length,
-                    itemBuilder: (context, index) {
-                      return RankingCardWidget(
-                        pos: index+1,
-                        profileImage: "${(snapshot.data! as QuerySnapshot).docs[index].get('profileImage')}", 
-                        name: "${(snapshot.data! as QuerySnapshot).docs[index].get('name')}", 
-                        imageQtt: (snapshot.data! as QuerySnapshot).docs[index].get('imagesQtt'));
-                    },
-                  ),)
+                  Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics()),
+                      shrinkWrap: true,
+                      itemCount: usersList.length,
+                      itemBuilder: (context, index) {
+                        return RankingCardWidget(
+                          pos: index + 1,
+                          profileImage: "${usersList[index].profileImage}",
+                          name: "${usersList[index].firstName}",
+                          imageQtt: "${usersList[index].imagesQtt}",
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

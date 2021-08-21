@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: ImagesController().getImages(),
+        future: ImagesController().getImages(widget.user.name),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
               user: widget.user, imagesQtt: imagesList.length
             );
           }
-          
+          print(widget.user.firstName);
           return Scaffold(
             appBar: AppBarWidget(
                 widget.user, imagesList.length),
