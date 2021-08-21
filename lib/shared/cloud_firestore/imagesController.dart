@@ -15,7 +15,7 @@ Future uploadImageFile(String path, context, UserModel user) async {
     firebase_storage.Reference ref = firebase_storage
         .FirebaseStorage.instance
         .ref()
-        .child('Thiago André')
+        .child('${user.name}')
         .child('${DateTime.now().toIso8601String()}');
     final result = await ref.putFile(File(path));
     String imgURL = await result.ref.getDownloadURL();
@@ -40,13 +40,14 @@ return users
       .update({
         'images': FieldValue.arrayUnion(["$imageURL"])
       })
-      .then((value) => print("User Added"))
-      .catchError((error) => print("Failed to add user: $error"));
+      .then((value) => imageQttIncrement(userName))
+      .catchError((error) => print("Ocorreu um erro ao inserir a URL da imagem no banco: $error"));
   }
 
 Future<List> getImages(userName) async {
   var snapshot = await users.doc('$userName').get();
   List imagesList = snapshot.get(FieldPath(['images']));
+  imagesList = List.from(imagesList.reversed);
   return imagesList;
 }
 
@@ -57,17 +58,17 @@ Future<void> imageQttIncrement(String userName) {
   DocumentSnapshot snapshot = await transaction.get(users.doc('$userName'));
 
   if (!snapshot.exists) {
-    throw Exception("User does not exist!");
+    throw Exception("Não foi possível obter informações do usuário");
   }
 
   dynamic data = snapshot.data();
-  int newFollowerCount = data['images_qtt'] + 1;
+  int newFollowerCount = data['imagesQtt'] + 1;
 
-  transaction.update(users.doc('$userName'), {'images_qtt': newFollowerCount});
+  transaction.update(users.doc('$userName'), {'imagesQtt': newFollowerCount});
 
   return newFollowerCount;
 })
-.then((value) => print("Follower count updated to $value"))
-.catchError((error) => print("Failed to update user followers: $error"));
+.then((value) => print("Contador atualizado para $value"))
+.catchError((error) => print("Ocorreu um erro ao atualizar o contador: $error"));
 }
 }

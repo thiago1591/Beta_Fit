@@ -36,6 +36,8 @@ class UsersController {
 
     snapshotData.asMap().forEach((index, element) {
       final user = UserModel(
+        id: snapshotData[index].get('id'), 
+        congratsReceived: snapshotData[index].get('congratsReceived'),
         name: snapshotData[index].get('name'),
         firstName: Services().getFirstName(snapshotData[index].get('name')),
         profileImage: snapshotData[index].get('profileImage'),

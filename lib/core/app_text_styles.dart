@@ -94,12 +94,6 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.w400,
   );
-
-  static final TextStyle congratsTitle = GoogleFonts.raleway(
-    color: AppColors.black,
-    fontSize: 40,
-    fontWeight: FontWeight.w600,
-  );
   
   static final TextStyle rankingTitle = GoogleFonts.raleway(
     color: AppColors.black,
@@ -123,6 +117,18 @@ class AppTextStyles {
     color: Colors.white,
     fontSize: 16,
     fontWeight: FontWeight.w400,
+  );
+
+  static final TextStyle congratsTitle = GoogleFonts.notoSans(
+    color: AppColors.black,
+    fontSize: 40,
+    fontWeight: FontWeight.w600,
+  );
+
+   static final TextStyle congratsTxt = GoogleFonts.notoSans(
+    color: Colors.grey,
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
   );
 
 

@@ -23,6 +23,7 @@ class LoginController {
         firstName: firstName,
         profileImage: response.photoUrl,
         imagesQtt: 0,
+        congratsReceived: false,
       );
       authController.setUser(context, user);
       setUserCloud(user);

@@ -74,8 +74,8 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35),
       child: FloatingActionButton(
-        //onPressed: () {print(widget.user);},
-          onPressed: _selectPhoto,
+        onPressed: () {print(widget.user.id);},
+          //onPressed: _selectPhoto,
           backgroundColor: AppColors.black,
           child: Icon(Icons.add)),
     );

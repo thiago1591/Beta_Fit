@@ -1,5 +1,8 @@
-import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:debate_place_flutter/core/app_text_styles.dart';
+
+import 'next_button/next_button_widget.dart';
 
 class CongratulationPage extends StatelessWidget {
   const CongratulationPage({Key? key}) : super(key: key);
@@ -8,40 +11,69 @@ class CongratulationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.maxFinite,
+        padding: EdgeInsets.only(top: 100),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(child: Text('')),
-            Text(
-              'PARABÉNS!!!',
-              style: AppTextStyles.congratsTitle,
-            ),
+            Image.asset('assets/images/trofeu2.png'),
             Padding(
-              padding: EdgeInsets.all(8),
-              child: Image.asset('assets/images/trofeu.png'),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Text(
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer totyscrambled it',
-                    style: AppTextStyles.uploadSubtitle,
+                    "Parabéns!",
+                    style: AppTextStyles.congratsTitle,
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    "Você concluiu o desafio de 30 dias!",
+                    style: AppTextStyles.congratsTxt,
                     textAlign: TextAlign.center,
                   ),
+                  Text(
+                    "Compartilhe com algum coordenador da BetaBit para receber um brinde",
+                    style: AppTextStyles.congratsTxt,
+                    textAlign: TextAlign.center,
+                  )
                 ],
               ),
             ),
-            Expanded(child: Text('')),
-            Padding(
-                padding: const EdgeInsets.only(bottom: 35),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Continuar'),
-                ))
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 68),
+                      child: NextButtonWidget.purple(
+                          label: "Compartilhar",
+                          onTap: () {
+                            Share.share(
+                                'BetaFit - O usuário teste acaba de completar 30 imagens enviadas, concluindo o desafio com sucesso!');
+                          }),
+                    )),
+                  ],
+                ),
+                SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 68),
+                      child: NextButtonWidget.white(
+                          label: "Voltar ao início",
+                          onTap: () {
+                            Navigator.pop(context);
+                          }),
+                    )),
+                  ],
+                ),
+              ],
+            )
           ],
         ),
       ),
