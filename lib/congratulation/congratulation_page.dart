@@ -1,3 +1,5 @@
+import 'package:debate_place_flutter/bottomNavigation/bottom_navigation.dart';
+import 'package:debate_place_flutter/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:debate_place_flutter/core/app_text_styles.dart';
@@ -5,7 +7,8 @@ import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'next_button/next_button_widget.dart';
 
 class CongratulationPage extends StatelessWidget {
-  const CongratulationPage({Key? key}) : super(key: key);
+  final UserModel user;
+  const CongratulationPage({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,19 +62,7 @@ class CongratulationPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 68),
-                      child: NextButtonWidget.white(
-                          label: "Voltar ao início",
-                          onTap: () {
-                            Navigator.pop(context);
-                          }),
-                    )),
-                  ],
-                ),
+                
               ],
             )
           ],

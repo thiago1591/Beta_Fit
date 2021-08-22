@@ -1,3 +1,4 @@
+import 'package:debate_place_flutter/congratulation/congratulation_page.dart';
 import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
 import 'package:debate_place_flutter/upload_image/widgets/preview_image_widget.dart';
@@ -16,6 +17,12 @@ class _UploadImagePageState extends State<UploadImagePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    if(widget.user.imagesQtt >= 30) {
+      return
+      CongratulationPage(user: widget.user);
+    }
+
     return Scaffold(
       body: Container(
         child: Column(

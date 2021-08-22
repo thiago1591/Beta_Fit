@@ -1,3 +1,4 @@
+import 'package:debate_place_flutter/congratulation/congratulation_page.dart';
 import 'package:debate_place_flutter/core/app_colors.dart';
 import 'package:debate_place_flutter/home/home_page.dart';
 import 'package:debate_place_flutter/ranking/ranking_page.dart';

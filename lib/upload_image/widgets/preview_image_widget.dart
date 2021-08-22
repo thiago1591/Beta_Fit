@@ -24,7 +24,7 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
 
     Future _pickImage(ImageSource source) async {
       final imageController = ImagesController();
-      
+
       final pickedFile =
           await _picker.pickImage(source: source, imageQuality: 50);
       if (pickedFile == null) {
@@ -38,46 +38,70 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
         return;
       }
 
-      await imageController.uploadImageFile(file.path,context,widget.user);
+      await imageController.uploadImageFile(file.path, context, widget.user);
     }
 
     Future _selectPhoto() async {
-      await showModalBottomSheet(
-        context: context,
-        builder: (context) => BottomSheet(
-          onClosing: () {},
-          builder: (context) => Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                leading: Icon(Icons.camera),
-                title: Text('Camera'),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _pickImage(ImageSource.camera);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.filter),
-                title: Text('Escolha uma imagem'),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  _pickImage(ImageSource.gallery);
-                },
-              ),
-            ],
+      if (widget.user.imagesQtt > 30) {
+        await showModalBottomSheet(
+          context: context,
+          builder: (context) => BottomSheet(
+            onClosing: () {},
+            builder: (context) => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: Icon(Icons.camera),
+                  title: Text('Camera'),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    _pickImage(ImageSource.camera);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.filter),
+                  title: Text('Escolha uma imagem'),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    _pickImage(ImageSource.gallery);
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      } else {
+        return _showDialog(context);
+      }
     }
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 35),
       child: FloatingActionButton(
-        onPressed: () {print(widget.user.id);},
-          //onPressed: _selectPhoto,
+          //onPressed: () {print(widget.user.id);},
+          onPressed: _selectPhoto,
           backgroundColor: AppColors.black,
           child: Icon(Icons.add)),
+    );
+  }
+
+  void _showDialog(context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text("Desafio Finalizado!"),
+          content: new Text("Você já completou o desafio"),
+          actions: <Widget>[
+            new ElevatedButton(
+              child: new Text("Fechar"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
