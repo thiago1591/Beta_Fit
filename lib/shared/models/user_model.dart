@@ -6,7 +6,6 @@ class UserModel {
   final String firstName;
   final String? profileImage;
   final int imagesQtt;
-  final bool congratsReceived;
 
   UserModel({
     required this.id, 
@@ -14,7 +13,6 @@ class UserModel {
     required this.firstName, 
     required this.profileImage, 
     required this.imagesQtt, 
-    required this.congratsReceived
     });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
@@ -23,8 +21,8 @@ class UserModel {
       name: map['name'], 
       firstName: map['firstName'], 
       profileImage: map['profileImage'], 
-      imagesQtt: map['imagesQtt'], 
-      congratsReceived: map['congratsReceived']);
+      imagesQtt: map['imagesQtt']
+    );
   }
 
   factory UserModel.fromJson(String json) =>
@@ -36,7 +34,6 @@ class UserModel {
         "firstName": firstName,
         "profileImage": profileImage,
         "imagesQtt": imagesQtt, 
-        "congratsReceived": false
       };
 
   String toJson() => jsonEncode(toMap());

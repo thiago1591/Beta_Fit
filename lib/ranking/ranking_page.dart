@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:debate_place_flutter/core/app_text_styles.dart';
 import 'package:debate_place_flutter/ranking/widgets/ranking_card_widget.dart';
-import 'package:debate_place_flutter/shared/cloud_firestore/usersController.dart';
+import 'package:debate_place_flutter/shared/controllers/users_controller.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/shared/services/snapshotToList.dart';
 import 'package:flutter/material.dart';
 
 class RankingPage extends StatefulWidget {
@@ -22,6 +21,7 @@ class _RankingPageState extends State<RankingPage> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('users').snapshots(),
         builder: (context, snapshot) {
+          
           if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),

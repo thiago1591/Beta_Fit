@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 class RankingCardWidget extends StatefulWidget {
   final pos, imageQtt;
   final String profileImage, name;
-  const RankingCardWidget({Key? key,required this.pos,required  this.imageQtt,required  this.profileImage,required  this.name}) : super(key: key);
+  const RankingCardWidget({Key? key,
+  required this.pos,
+  required  this.imageQtt,
+  required  this.profileImage,
+  required  this.name
+  }) : super(key: key);
 
   @override
   _RankingCardWidgetState createState() => _RankingCardWidgetState();

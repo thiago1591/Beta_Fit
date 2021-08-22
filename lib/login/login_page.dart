@@ -31,7 +31,10 @@ class LoginPage extends StatelessWidget {
                 Text('dev mais saudável',
                     style: AppTextStyles.loginTitle,
                     textAlign: TextAlign.center),
-                Expanded(flex: 1,child: Text(''),),  
+                Expanded(
+                  flex: 1,
+                  child: Text(''),
+                ),
                 LoginButtonWidget()
               ],
             ),

@@ -1,26 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/shared/services/services.dart';
+import 'package:debate_place_flutter/shared/services/get_first_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('users');
 
 class UsersController {
-  Future<void> addUser() {
+  Future<void> addUser(UserModel user) {
     return users
-        .doc('Thiago André')
+        .doc('${user.id}')
         .set({
-          'id': 12,
-          'name': 'Thiago André',
-          'photoURL': '',
-          'first_name': 'Thiago',
-          'profile_image': 'teste',
+          'id': user.id,
+          'name': user.name,
+          'first_name': user.firstName,
+          'profile_image': user.profileImage,
           'images': [],
           'imagesQtt': 0,
-          'received_congrats': false
         })
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
+        .then((value) => print("Usuário adicionado"))
+        .catchError((error) => print("Ocorreu um erro ao adicionar o usuário: $error"));
   }
 
   Future<String> getUser() async {
@@ -36,8 +34,8 @@ class UsersController {
 
     snapshotData.asMap().forEach((index, element) {
       final user = UserModel(
-        id: "1", 
-        congratsReceived: false,
+        id:'teste',
+        //id: snapshotData[index].get('id'), 
         name: snapshotData[index].get('name'),
         firstName: Services().getFirstName(snapshotData[index].get('name')),
         profileImage: snapshotData[index].get('profileImage'),

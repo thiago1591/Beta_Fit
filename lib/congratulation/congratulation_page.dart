@@ -1,4 +1,3 @@
-import 'package:debate_place_flutter/bottomNavigation/bottom_navigation.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';

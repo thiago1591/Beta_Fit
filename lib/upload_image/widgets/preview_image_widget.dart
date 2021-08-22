@@ -1,5 +1,5 @@
 import 'package:debate_place_flutter/core/app_colors.dart';
-import 'package:debate_place_flutter/shared/cloud_firestore/imagesController.dart';
+import 'package:debate_place_flutter/shared/controllers/images_controller.dart';
 import 'package:debate_place_flutter/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -42,37 +42,33 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
     }
 
     Future _selectPhoto() async {
-      if (widget.user.imagesQtt > 30) {
-        await showModalBottomSheet(
-          context: context,
-          builder: (context) => BottomSheet(
-            onClosing: () {},
-            builder: (context) => Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  leading: Icon(Icons.camera),
-                  title: Text('Camera'),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    _pickImage(ImageSource.camera);
-                  },
-                ),
-                ListTile(
-                  leading: Icon(Icons.filter),
-                  title: Text('Escolha uma imagem'),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    _pickImage(ImageSource.gallery);
-                  },
-                ),
-              ],
-            ),
+      await showModalBottomSheet(
+        context: context,
+        builder: (context) => BottomSheet(
+          onClosing: () {},
+          builder: (context) => Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(Icons.camera),
+                title: Text('Camera'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _pickImage(ImageSource.camera);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.filter),
+                title: Text('Escolha uma imagem'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  _pickImage(ImageSource.gallery);
+                },
+              ),
+            ],
           ),
-        );
-      } else {
-        return _showDialog(context);
-      }
+        ),
+      );
     }
 
     return Padding(
@@ -82,26 +78,6 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
           onPressed: _selectPhoto,
           backgroundColor: AppColors.black,
           child: Icon(Icons.add)),
-    );
-  }
-
-  void _showDialog(context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: new Text("Desafio Finalizado!"),
-          content: new Text("Você já completou o desafio"),
-          actions: <Widget>[
-            new ElevatedButton(
-              child: new Text("Fechar"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
