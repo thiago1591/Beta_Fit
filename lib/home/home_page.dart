@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:debate_place_flutter/home/widgets/appbar/app_bar_widget.dart';
-import 'package:debate_place_flutter/home/widgets/begin_challenge/begin_challenge_widget.dart';
-import 'package:debate_place_flutter/home/widgets/imagecard/image_card_widget.dart';
-import 'package:debate_place_flutter/shared/controllers/images_controller.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
+import 'package:beta_fit/home/widgets/appbar/app_bar_widget.dart';
+import 'package:beta_fit/home/widgets/begin_challenge/begin_challenge_widget.dart';
+import 'package:beta_fit/home/widgets/imagecard/image_card_widget.dart';
+import 'package:beta_fit/shared/controllers/images_controller.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder( 
-        future: imagesController.getImagesLocal(context, widget.user.name),
+        future: imagesController.getImagesLocal(context, widget.user),
         builder: (context, snapshot) {
           
           if (!snapshot.hasData) {

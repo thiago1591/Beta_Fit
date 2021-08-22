@@ -1,4 +1,4 @@
-import 'package:debate_place_flutter/login/login_controller.dart';
+import 'package:beta_fit/login/login_controller.dart';
 import 'package:flutter/material.dart';
 
 class LoginButtonWidget extends StatefulWidget {

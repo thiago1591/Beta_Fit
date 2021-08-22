@@ -1,7 +1,7 @@
-import 'package:debate_place_flutter/shared/models/user_model.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:debate_place_flutter/core/app_text_styles.dart';
+import 'package:beta_fit/core/app_text_styles.dart';
 
 import 'next_button/next_button_widget.dart';
 

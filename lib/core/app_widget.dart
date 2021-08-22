@@ -1,4 +1,4 @@
-import 'package:debate_place_flutter/splash/splash_page.dart';
+import 'package:beta_fit/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {

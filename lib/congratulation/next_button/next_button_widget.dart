@@ -1,5 +1,5 @@
-import 'package:debate_place_flutter/core/core.dart';
-import 'package:debate_place_flutter/core/app_colors.dart';
+import 'package:beta_fit/core/core.dart';
+import 'package:beta_fit/core/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

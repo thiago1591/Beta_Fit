@@ -1,7 +1,7 @@
-import 'package:debate_place_flutter/congratulation/congratulation_page.dart';
-import 'package:debate_place_flutter/core/app_text_styles.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/upload_image/widgets/preview_image_widget.dart';
+import 'package:beta_fit/congratulation/congratulation_page.dart';
+import 'package:beta_fit/core/app_text_styles.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
+import 'package:beta_fit/upload_image/widgets/preview_image_widget.dart';
 import 'package:flutter/material.dart';
 
 class UploadImagePage extends StatefulWidget {

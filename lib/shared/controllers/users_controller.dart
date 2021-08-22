@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/shared/services/get_first_name.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
+import 'package:beta_fit/shared/services/get_first_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -34,8 +34,7 @@ class UsersController {
 
     snapshotData.asMap().forEach((index, element) {
       final user = UserModel(
-        id:'teste',
-        //id: snapshotData[index].get('id'), 
+        id: snapshotData[index].get('id'), 
         name: snapshotData[index].get('name'),
         firstName: Services().getFirstName(snapshotData[index].get('name')),
         profileImage: snapshotData[index].get('profileImage'),

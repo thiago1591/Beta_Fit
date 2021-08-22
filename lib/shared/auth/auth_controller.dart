@@ -1,6 +1,6 @@
-import 'package:debate_place_flutter/bottomNavigation/bottom_navigation.dart';
-import 'package:debate_place_flutter/login/login_page.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
+import 'package:beta_fit/bottomNavigation/bottom_navigation.dart';
+import 'package:beta_fit/login/login_page.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

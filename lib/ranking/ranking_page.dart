@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:debate_place_flutter/core/app_text_styles.dart';
-import 'package:debate_place_flutter/ranking/widgets/ranking_card_widget.dart';
-import 'package:debate_place_flutter/shared/controllers/users_controller.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
+import 'package:beta_fit/core/app_text_styles.dart';
+import 'package:beta_fit/ranking/widgets/ranking_card_widget.dart';
+import 'package:beta_fit/shared/controllers/users_controller.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class RankingPage extends StatefulWidget {

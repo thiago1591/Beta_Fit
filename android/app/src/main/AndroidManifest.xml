@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.debate_place_flutter">
-   <application
+   <application     
         android:label="BetaFit"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,5 +1,5 @@
-import 'package:debate_place_flutter/core/app_colors.dart';
-import 'package:debate_place_flutter/core/app_text_styles.dart';
+import 'package:beta_fit/core/app_colors.dart';
+import 'package:beta_fit/core/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class RankingCardWidget extends StatefulWidget {

@@ -1,8 +1,8 @@
-import 'package:debate_place_flutter/core/app_colors.dart';
-import 'package:debate_place_flutter/home/home_page.dart';
-import 'package:debate_place_flutter/ranking/ranking_page.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/upload_image/upload_image_page.dart';
+import 'package:beta_fit/core/app_colors.dart';
+import 'package:beta_fit/home/home_page.dart';
+import 'package:beta_fit/ranking/ranking_page.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
+import 'package:beta_fit/upload_image/upload_image_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {

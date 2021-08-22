@@ -1,7 +1,7 @@
-import 'package:debate_place_flutter/shared/auth/auth_controller.dart';
-import 'package:debate_place_flutter/shared/controllers/users_controller.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/shared/services/get_first_name.dart';
+import 'package:beta_fit/shared/auth/auth_controller.dart';
+import 'package:beta_fit/shared/controllers/users_controller.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
+import 'package:beta_fit/shared/services/get_first_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

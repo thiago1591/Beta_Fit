@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:debate_place_flutter/bottomNavigation/bottom_navigation.dart';
-import 'package:debate_place_flutter/congratulation/congratulation_page.dart';
-import 'package:debate_place_flutter/shared/models/user_model.dart';
-import 'package:debate_place_flutter/upload_image/widgets/loading_widget.dart';
+import 'package:beta_fit/bottomNavigation/bottom_navigation.dart';
+import 'package:beta_fit/congratulation/congratulation_page.dart';
+import 'package:beta_fit/shared/models/user_model.dart';
+import 'package:beta_fit/upload_image/widgets/loading_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 CollectionReference users = FirebaseFirestore.instance.collection('users');
 
 class ImagesController {
+
   //Faz o upload da imagem para o storage do firebase e cria uma URL de
   //acesso a imagem, que é passada para a função uploadImageURL
   Future uploadImageFile(String path, context, UserModel user) async {
@@ -20,7 +21,7 @@ class ImagesController {
     try {
       firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
           .ref()
-          .child('${user.name}')
+          .child('${user.id}')
           .child('${DateTime.now().toIso8601String()}');
       final result = await ref.putFile(File(path));
       String imgURL = await result.ref.getDownloadURL();
@@ -38,7 +39,7 @@ class ImagesController {
   //assim é mais facil de acessa-la pelo StreamBuilder
   Future<void> uploadImageURL(UserModel user, imageURL, context) {
     return users
-        .doc('${user.name}')
+        .doc('${user.id}')
         .update({
           'images': FieldValue.arrayUnion(["$imageURL"])
         })
@@ -47,20 +48,20 @@ class ImagesController {
             "Ocorreu um erro ao inserir a URL da imagem no banco: $error"));
   }
 
-  Future<List> getImagesFirebase(userName) async {
-    var snapshot = await users.doc('$userName').get();
+  Future<List> getImagesFirebase(UserModel user) async {
+    var snapshot = await users.doc('${user.id}').get();
     List imagesList = snapshot.get(FieldPath(['images']));
     imagesList = List.from(imagesList.reversed);
     return imagesList;
   }
 
-  Future<String> getImagesLocal(BuildContext context, userName) async {
+  Future<String> getImagesLocal(BuildContext context, UserModel user) async {
     final instance = await SharedPreferences.getInstance();
     if (instance.containsKey("imagesList")) {
       final imagesJson = instance.get("imagesList") as String;
       return imagesJson;
     }
-    List imagesList = await ImagesController().getImagesFirebase(userName);
+    List imagesList = await ImagesController().getImagesFirebase(user);
     await instance.setString("imagesList", jsonEncode(imagesList));
     final imagesJson = instance.get("imagesList") as String;
     return imagesJson;
@@ -70,7 +71,7 @@ class ImagesController {
     return FirebaseFirestore.instance
         .runTransaction((transaction) async {
           DocumentSnapshot snapshot =
-              await transaction.get(users.doc('${user.name}'));
+              await transaction.get(users.doc('${user.id}'));
 
           if (!snapshot.exists) {
             throw Exception("Não foi possível obter informações do usuário");
@@ -80,7 +81,7 @@ class ImagesController {
           int newFollowerCount = data['imagesQtt'] + 1;
 
           transaction.update(
-              users.doc('${user.name}'), {'imagesQtt': newFollowerCount});
+              users.doc('${user.id}'), {'imagesQtt': newFollowerCount});
 
           if (newFollowerCount == 30) {
             Navigator.pushReplacement(
