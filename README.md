@@ -14,7 +14,7 @@ Este aplicativo ficou em primeiro lugar e na semana seguinte foi aprimorado para
 ## Instaladores
 Se você quiser testar o App em modo de produção, o instalador está abaixo:
 
-em breve!
+[Android .apk installer](https://drive.google.com/file/d/1b_GNrZxi6dmPafhsDLXA1WLARs0WfMld/view?usp=sharing)
 
 
 Obrigado!
