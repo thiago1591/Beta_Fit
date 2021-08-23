@@ -1,16 +1,21 @@
-# debate_place_flutter
+# Beta Fit
 
-A new Flutter project.
+![Preview-Screens](assets/readme_images/preview.png)
 
-## Getting Started
+## Sobre o projeto
 
-This project is a starting point for a Flutter application.
+Um aplicativo desenvolvido durante a competição Bethaton, oferecida pela empresa BetaBit. Mais informações sobre o desafio podem ser vistas abaixo
 
-A few resources to get you started if this is your first Flutter project:
+![Presentation 1](assets/readme_images/presentation1.png)
+![Presentation 2](assets/readme_images/presentation2.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Este aplicativo ficou em primeiro lugar e na semana seguinte foi aprimorado para que os funcionários de BetaBit pudessem utilizar.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Instaladores
+Se você quiser testar o App em modo de produção, o instalador está abaixo:
+
+em breve!
+
+
+Obrigado!
+
