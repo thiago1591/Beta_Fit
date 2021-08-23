@@ -30,6 +30,7 @@ class _RankingPageState extends State<RankingPage> {
 
           List<UserModel> usersList = usersController.orderUsers(snapshot);
           return SafeArea(
+            
             child: Container(
               child: Column(
                 children: [
@@ -52,7 +53,7 @@ class _RankingPageState extends State<RankingPage> {
                   Expanded(
                     child: ListView.builder(
                       physics: const BouncingScrollPhysics(
-                          parent: AlwaysScrollableScrollPhysics()),
+                      parent: AlwaysScrollableScrollPhysics()),
                       shrinkWrap: true,
                       itemCount: usersList.length,
                       itemBuilder: (context, index) {

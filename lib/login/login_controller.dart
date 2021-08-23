@@ -1,4 +1,4 @@
-import 'package:beta_fit/shared/auth/auth_controller.dart';
+import 'package:beta_fit/shared/controllers/auth_controller.dart';
 import 'package:beta_fit/shared/controllers/users_controller.dart';
 import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:beta_fit/shared/services/get_first_name.dart';

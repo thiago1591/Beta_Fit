@@ -1,3 +1,4 @@
+import 'package:beta_fit/bottom_navigation/bottom_navigation.dart';
 import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
@@ -32,7 +33,7 @@ class CongratulationPage extends StatelessWidget {
                     height: 16,
                   ),
                   Text(
-                    "Você concluiu o desafio de 30 dias!",
+                    "Você enviou 30 imagens com sucesso!",
                     style: AppTextStyles.congratsTxt,
                     textAlign: TextAlign.center,
                   ),
@@ -55,13 +56,25 @@ class CongratulationPage extends StatelessWidget {
                           label: "Compartilhar",
                           onTap: () {
                             Share.share(
-                                'BetaFit - O usuário teste acaba de completar 30 imagens enviadas, concluindo o desafio com sucesso!');
+                                'BetaFit - O usuário $user acaba de completar 30 imagens enviadas, concluindo o desafio com sucesso!');
                           }),
                     )),
                   ],
                 ),
                 SizedBox(height: 24),
-                
+                Row(
+                  children: [
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 68),
+                      child: NextButtonWidget.white(
+                          label: "Voltar ao início",
+                          onTap: () {
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigation(user:user)));
+                          }),
+                    )),
+                  ],
+                ) 
               ],
             )
           ],

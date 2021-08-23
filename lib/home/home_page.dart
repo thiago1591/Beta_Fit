@@ -1,10 +1,11 @@
-import 'dart:convert';
 import 'package:beta_fit/home/widgets/appbar/app_bar_widget.dart';
 import 'package:beta_fit/home/widgets/begin_challenge/begin_challenge_widget.dart';
+import 'package:beta_fit/shared/services/map_indexed.dart';
 import 'package:beta_fit/home/widgets/imagecard/image_card_widget.dart';
 import 'package:beta_fit/shared/controllers/images_controller.dart';
 import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:flutter/material.dart';
+
 
 class HomePage extends StatefulWidget {
   final UserModel user;
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder( 
-        future: imagesController.getImagesLocal(context, widget.user),
+        future: imagesController.getImagesFirebase(widget.user),
         builder: (context, snapshot) {
           
           if (!snapshot.hasData) {
@@ -29,11 +30,11 @@ class _HomePageState extends State<HomePage> {
             );
           }
 
-          List imagesList = jsonDecode(snapshot.data.toString());
+          List imagesList = snapshot.data! as List;
 
           if (imagesList.length == 0) {
             return BeginChallengeWidget(
-                user: widget.user, imagesQtt: 2);
+                user: widget.user, imagesQtt: 0);
           }
 
           return Scaffold(
@@ -48,12 +49,12 @@ class _HomePageState extends State<HomePage> {
                       mainAxisSpacing: 0,
                       crossAxisCount: 2,
                       children: imagesList
-                          .map((item) => ImageCardWidget(
-                              profileImage: "$item",
-                              date: "nao implementado ainda"))
+                          .mapIndexed((index,item) => ImageCardWidget(
+                              profileImage: "${item['imageURL']}",
+                              date: "${item['date']}"))
                           .toList(),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

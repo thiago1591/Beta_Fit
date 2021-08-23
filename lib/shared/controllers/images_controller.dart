@@ -1,18 +1,15 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:beta_fit/bottomNavigation/bottom_navigation.dart';
+import 'package:beta_fit/bottom_navigation/bottom_navigation.dart';
 import 'package:beta_fit/congratulation/congratulation_page.dart';
 import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:beta_fit/upload_image/widgets/loading_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('users');
 
 class ImagesController {
-
   //Faz o upload da imagem para o storage do firebase e cria uma URL de
   //acesso a imagem, que é passada para a função uploadImageURL
   Future uploadImageFile(String path, context, UserModel user) async {
@@ -25,7 +22,6 @@ class ImagesController {
           .child('${DateTime.now().toIso8601String()}');
       final result = await ref.putFile(File(path));
       String imgURL = await result.ref.getDownloadURL();
-      print(imgURL);
       uploadImageURL(user, imgURL, context);
     } catch (e) {
       print(e);
@@ -38,10 +34,11 @@ class ImagesController {
   //armazena a URL da imagem na coleção do user no cloud Firestore,
   //assim é mais facil de acessa-la pelo StreamBuilder
   Future<void> uploadImageURL(UserModel user, imageURL, context) {
+    Map imageMap = {"date": "${DateTime.now()}", "imageURL": "$imageURL"};
     return users
         .doc('${user.id}')
         .update({
-          'images': FieldValue.arrayUnion(["$imageURL"])
+          'images': FieldValue.arrayUnion([imageMap])
         })
         .then((value) => imageQttIncrement(user, context))
         .catchError((error) => print(
@@ -53,18 +50,6 @@ class ImagesController {
     List imagesList = snapshot.get(FieldPath(['images']));
     imagesList = List.from(imagesList.reversed);
     return imagesList;
-  }
-
-  Future<String> getImagesLocal(BuildContext context, UserModel user) async {
-    final instance = await SharedPreferences.getInstance();
-    if (instance.containsKey("imagesList")) {
-      final imagesJson = instance.get("imagesList") as String;
-      return imagesJson;
-    }
-    List imagesList = await ImagesController().getImagesFirebase(user);
-    await instance.setString("imagesList", jsonEncode(imagesList));
-    final imagesJson = instance.get("imagesList") as String;
-    return imagesJson;
   }
 
   Future<void> imageQttIncrement(UserModel user, context) {
@@ -80,14 +65,17 @@ class ImagesController {
           dynamic data = snapshot.data();
           int newFollowerCount = data['imagesQtt'] + 1;
 
-          transaction.update(
-              users.doc('${user.id}'), {'imagesQtt': newFollowerCount});
+          transaction
+              .update(users.doc('${user.id}'), {'imagesQtt': newFollowerCount});
 
-          if (newFollowerCount == 30) {
+          if (newFollowerCount % 30 == 0) {
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => CongratulationPage(user: user)));
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    CongratulationPage(user: user),
+              ),
+            );
           }
 
           return newFollowerCount;

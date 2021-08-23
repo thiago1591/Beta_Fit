@@ -1,3 +1,4 @@
+import 'package:beta_fit/shared/services/format_date.dart';
 import 'package:flutter/material.dart';
 
 class ImageCardWidget extends StatelessWidget {
@@ -37,7 +38,7 @@ class ImageCardWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '16/08',
+                            '${formatDate(date)}',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],

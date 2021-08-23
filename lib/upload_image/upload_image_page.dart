@@ -1,4 +1,3 @@
-import 'package:beta_fit/congratulation/congratulation_page.dart';
 import 'package:beta_fit/core/app_text_styles.dart';
 import 'package:beta_fit/shared/models/user_model.dart';
 import 'package:beta_fit/upload_image/widgets/preview_image_widget.dart';
@@ -17,12 +16,6 @@ class _UploadImagePageState extends State<UploadImagePage> {
 
   @override
   Widget build(BuildContext context) {
-
-    if(widget.user.imagesQtt >= 30) {
-      return
-      CongratulationPage(user: widget.user);
-    }
-
     return Scaffold(
       body: Container(
         child: Column(

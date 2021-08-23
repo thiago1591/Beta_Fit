@@ -18,6 +18,7 @@ class PreviewImageWidget extends StatefulWidget {
 }
 
 class _PreviewImageWidgetState extends State<PreviewImageWidget> {
+
   @override
   Widget build(BuildContext context) {
     final ImagePicker _picker = ImagePicker();
@@ -74,7 +75,6 @@ class _PreviewImageWidgetState extends State<PreviewImageWidget> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35),
       child: FloatingActionButton(
-          //onPressed: () {print(widget.user.id);},
           onPressed: _selectPhoto,
           backgroundColor: AppColors.black,
           child: Icon(Icons.add)),

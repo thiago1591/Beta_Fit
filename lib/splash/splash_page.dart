@@ -1,5 +1,5 @@
 import 'package:beta_fit/core/app_text_styles.dart';
-import 'package:beta_fit/shared/auth/auth_controller.dart';
+import 'package:beta_fit/shared/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
